@@ -1,0 +1,272 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <link rel="icon" type="/images/png" th:href="@{/images/favicon.png}">
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <!-- Material Design Icons -->
+    <link th:href="@{/vendor/icons/css/materialdesignicons.min.css}" media="all" rel="stylesheet" type="text/css"/>
+    <!-- Select2 CSS -->
+    <link th:href="@{/vendor/select2/css/select2-bootstrap.css}"/>
+    <link th:href="@{/vendor/select2/css/select2.min.css}" rel="stylesheet"/>
+    <!-- Custom styles for this template -->
+    <link th:href="@{/css/osahan.css}" rel="stylesheet">
+    <title>Home</title>
+</head>
+
+<body>
+<nav th:replace="layouts :: navbar"></nav>
+<div class="container">
+    <!-- Properties List -->
+    <section class="section-padding">
+        <div class="section-title text-center mb-5">
+            <h2>Latest Properties</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div th:each="annonce : ${annonces}" class="col-lg-4 col-md-4">
+                    <div class="card card-list">
+                        <a href="#">
+                            <div class="card-img">
+                                <div class="love-badge text-danger"><i class="mdi mdi-heart"></i></div>
+                                <div class="badge images-badge"><i class="mdi mdi-image-filter"></i> 12</div>
+                                <span class="badge badge-primary">For Sale</span>
+                                <img class="card-img-top" th:src="${annonce.url}" alt="Card image cap">
+                            </div>
+                            <div class="card-body">
+                                <h2 class="text-primary mb-2 mt-0">
+                                    <span th:value="${annonce.price}"></span><small>/Per Month</small>
+                                </h2>
+                                <h5 th:value="${annonce.title}" class="card-title mb-2"></h5>
+                                <h6 th:value="${annonce.address}" class="card-subtitle mt-1 mb-0 text-muted"><i
+                                        class="mdi mdi-home-map-marker"></i>
+                                </h6>
+                            </div>
+                            <div class="card-footer">
+                                <span><i class="mdi mdi-sofa"></i> Chambre : <strong
+                                        th:utext="${annonce.chamber}"></strong></span>
+                                <span><i
+                                        class="mdi mdi-move-resize-variant"></i> Area : <strong
+                                        th:value="${annonce.area}"></strong></span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-12 text-center">
+                    <button class="btn btn-secondary font-weight-bold btn-lg" type="submit">VIEW ALL</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Properties List -->
+    <!-- Properties by City -->
+    <section class="section-padding bg-white">
+        <div class="section-title text-center mb-5">
+            <h2>Property By City</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-8">
+                    <div class="card bg-dark text-white card-overlay">
+                        <a href="#">
+                            <img class="card-img" src="img/overlay/1.png" alt="Card image">
+                            <div class="card-img-overlay">
+                                <h3 class="card-title text-white">New York</h3>
+                                <p class="card-text text-white">16 Properties</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <div class="card bg-dark text-white card-overlay">
+                        <a href="#">
+                            <img class="card-img" src="img/overlay/2.png" alt="Card image">
+                            <div class="card-img-overlay">
+                                <h3 class="card-title text-white">Los Angeles</h3>
+                                <p class="card-text text-white">265 Properties</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-4">
+                    <div class="card bg-dark text-white card-overlay">
+                        <a href="#">
+                            <img class="card-img" src="img/overlay/3.png" alt="Card image">
+                            <div class="card-img-overlay">
+                                <h3 class="card-title text-white">Chicago</h3>
+                                <p class="card-text text-white">620 Properties</p>
+                            </div>
+                        </a>
+                        .
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-8">
+                    <div class="card bg-dark text-white card-overlay">
+                        <a href="#">
+                            <img class="card-img" src="img/overlay/4.png" alt="Card image">
+                            <div class="card-img-overlay">
+                                <h3 class="card-title text-white">Philadelphia</h3>
+                                <p class="card-text text-white">28 Properties</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Properties by City -->
+    <!-- Trusted Agents -->
+    <section class="section-padding">
+        <div class="section-title text-center mb-5">
+            <h2>Trusted Agents</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-4">
+                    <div class="agents-card text-center">
+                        <img class="img-fluid mb-4" src="img/user/1.jpg" alt="">
+                        <p class="mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                            Ipsum
+                            has been.</p>
+                        <h6 class="mb-0 text-primary">- Stave Martin
+                            <span class="star-rating">
+                        <i class="mdi mdi-star text-warning"></i>
+                        <i class="mdi mdi-star text-warning"></i>
+                        <i class="mdi mdi-star text-warning"></i>
+                        <i class="mdi mdi-star text-warning"></i>
+                        <i class="mdi mdi-star-half text-warning"></i>
+                     </span>
+                        </h6>
+                        <small>Buying Agent</small>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <div class="agents-card text-center">
+                        <img class="img-fluid mb-4" src="img/user/2.jpg" alt="">
+                        <p class="mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                            Ipsum
+                            has been.</p>
+                        <h6 class="mb-0 text-primary">- Mark Smith
+                            <span class="star-rating">
+                        <i class="mdi mdi-star text-warning"></i>
+                        <i class="mdi mdi-star text-warning"></i>
+                        <i class="mdi mdi-star text-warning"></i>
+                        <i class="mdi mdi-star text-warning"></i>
+                        <i class="mdi mdi-star-half text-warning"></i>
+                     </span>
+                        </h6>
+                        <small>Selling Agent</small>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <div class="agents-card text-center">
+                        <img class="img-fluid mb-4" src="img/user/3.jpg" alt="">
+                        <p class="mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                            Ipsum
+                            has been.</p>
+                        <h6 class="mb-0 text-primary">- Ryan Printz
+                            <span class="star-rating">
+                        <i class="mdi mdi-star text-warning"></i>
+                        <i class="mdi mdi-star text-warning"></i>
+                        <i class="mdi mdi-star text-warning"></i>
+                        <i class="mdi mdi-star text-warning"></i>
+                        <i class="mdi mdi-star-half text-warning"></i>
+                     </span>
+                        </h6>
+                        <small>Real Estate Broker</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Trusted Agents -->
+    <!-- Blog -->
+    <section class="section-padding border-top">
+        <div class="section-title text-center mb-5">
+            <h2>Blogs We Wrote For You</h2>
+            <p>Lorem ipsum dolor sit amet.</p>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-4">
+                    <div class="card blog-card">
+                        <a href="#">
+                            <img class="card-img-top" src="img/blog/1.png" alt="Card image cap">
+                            <div class="card-body">
+                                <span class="badge badge-success">House/Villa</span>
+                                <h6>Possimus aut mollitia eum ipsum</h6>
+                                <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus aut
+                                    mollitia
+                                    eum ipsum fugiat odio officiis odit.</p>
+                            </div>
+                            <div class="card-footer">
+                                <p class="mb-0"><img class="rounded-circle" src="img/user/3.jpg" alt="Card image cap">
+                                    <strong>Rahul Yadav</strong> On October 03, 2018
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <div class="card blog-card">
+                        <a href="#">
+                            <img class="card-img-top" src="img/blog/2.png" alt="Card image cap">
+                            <div class="card-body">
+                                <span class="badge badge-danger">Shop/Showroom</span>
+                                <h6>Consectetur adipisicing elit</h6>
+                                <p class="mb-0">Cnsectetur ipsum dolor sit amet, consectetur adipisicing elit. Possimus
+                                    aut
+                                    mollitia eum ipsum fugiat odio officiis odit.</p>
+                            </div>
+                            <div class="card-footer">
+                                <p class="mb-0"><img class="rounded-circle" src="img/user/2.jpg" alt="Card image cap">
+                                    <strong>Rahul Yadav</strong> On October 05, 2018
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <div class="card blog-card">
+                        <a href="#">
+                            <img class="card-img-top" src="img/blog/3.png" alt="Card image cap">
+                            <div class="card-body">
+                                <span class="badge badge-info">Industrial Building</span>
+                                <h6>Fugiat odio officiis odit</h6>
+                                <p class="mb-0">Mollitia ipsum dolor sit amet, consectetur adipisicing elit. Possimus
+                                    aut
+                                    mollitia eum ipsum fugiat odio officiis odit.</p>
+                            </div>
+                            <div class="card-footer">
+                                <p class="mb-0"><img class="rounded-circle" src="img/user/1.jpg" alt="Card image cap">
+                                    <strong>Rahul Yadav</strong> On October 06, 2018
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Blog -->
+    <!-- Join Team -->
+    <section class="section-padding bg-white text-center">
+        <h2 class="mt-0">Join our professional team & agents<br>to start selling your house</h2>
+        <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        <button type="button" class="btn btn-primary">Contact Us</button>
+        <button type="button"
+                class="btn btn-outline-primary">Read More
+        </button>
+    </section>
+</div>
+</body>
+
+<nav th:insert="layouts :: footer"></nav>
+</html>
