@@ -1,104 +1,44 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.irisi.immo.model.bean;
 
-import org.springframework.data.neo4j.core.schema.GeneratedValue;
-import org.springframework.data.neo4j.core.schema.Id;
-import org.springframework.data.neo4j.core.schema.Node;
-import org.springframework.data.neo4j.core.schema.Relationship;
+import com.flipkart.hbaseobjectmapper.Family;
+import com.flipkart.hbaseobjectmapper.HBColumn;
+import com.flipkart.hbaseobjectmapper.HBRecord;
+import com.flipkart.hbaseobjectmapper.HBTable;
 
 import java.io.Serializable;
 import java.util.List;
 
+@HBTable(name = "annonceurs", families = {
+        @Family(name = "main")
+})
+public class Annonceur implements HBRecord<String>, Serializable {
 
-/**
- * @author yassine
- */
-//@Document(collection = "annonceur")
-@Node
-public class Annonceur implements Serializable {
-
-
-    @Id
-    @GeneratedValue
-    private Long id;
-
-    private String name;
-
+    private String id;
+    @HBColumn(family = "main", column = "firstname")
+    private String firstname;
+    @HBColumn(family = "main", column = "lastname")
+    private String lastname;
+    @HBColumn(family = "main", column = "telephone")
     private String telephone;
+    @HBColumn(family = "main", column = "email")
     private String email;
+    @HBColumn(family = "main", column = "password")
+    private String password;
+    @HBColumn(family = "main", column = "address")
     private String address;
-
-    @Relationship(type = "from")
+    @HBColumn(family = "main", column = "city")
     private City city;
-
-
-    @Relationship(type = "INCLUDES")
+    @HBColumn(family = "main", column = "annonces")
     private List<Annonce> annonces;
 
-    public City getCity() {
-        return city;
-    }
 
-    public void setCity(City city) {
-        this.city = city;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getTelephone() {
-        return telephone;
-    }
-
-    public void setTelephone(String telephone) {
-        this.telephone = telephone;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public List<Annonce> getAnnonces() {
-        return annonces;
-    }
-
-    public void setAnnonces(List<Annonce> annonces) {
-        this.annonces = annonces;
+    @Override
+    public String composeRowKey() {
+        return email.split("@")[0];
     }
 
     @Override
-    public String toString() {
-        return "Annonceur{" + "email=" + email + '}';
+    public void parseRowKey(String s) {
+        id = s;
     }
-
-
 }

@@ -1,94 +1,41 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.irisi.immo.model.bean;
 
-import org.springframework.data.neo4j.core.schema.GeneratedValue;
-import org.springframework.data.neo4j.core.schema.Id;
-import org.springframework.data.neo4j.core.schema.Node;
-import org.springframework.data.neo4j.core.schema.Relationship;
+import com.flipkart.hbaseobjectmapper.Family;
+import com.flipkart.hbaseobjectmapper.HBColumn;
+import com.flipkart.hbaseobjectmapper.HBRecord;
+import com.flipkart.hbaseobjectmapper.HBTable;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
-import java.util.List;
 
-/**
- * @author yassine
- */
-//@Document(collection = "users")
-@Node
-public class User implements Serializable {
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@HBTable(name = "User", families = {
+        @Family(name = "User")
+})
+public class User implements HBRecord<String>, Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue
-    private Long id;
 
-    private String fullName;
+    private String id;
+    @HBColumn(family = "User", column = "mobile")
     private String mobile;
+    @HBColumn(family = "User", column = "email")
     private String email;
+    @HBColumn(family = "User", column = "fullName")
+    private String fullName;
+    @HBColumn(family = "User", column = "password")
     private String password;
 
-    @Relationship(type = "HAS_MANY")
-    private List<Annonce> annonces;
-
-    public String getFullName() {
-        return fullName;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
-    public String getMobile() {
-        return mobile;
-    }
-
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
-    }
-
-    public String getEmail() {
+    @Override
+    public String composeRowKey() {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-
     @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
+    public void parseRowKey(String s) {
+        this.id = s;
     }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof User)) {
-            return false;
-        }
-        User other = (User) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "com.immo.bean.User[ id=" + id + " ]";
-    }
-
 }

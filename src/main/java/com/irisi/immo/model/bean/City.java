@@ -1,82 +1,30 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.irisi.immo.model.bean;
 
-import org.springframework.data.neo4j.core.schema.GeneratedValue;
-import org.springframework.data.neo4j.core.schema.Id;
-import org.springframework.data.neo4j.core.schema.Node;
-import org.springframework.data.neo4j.core.schema.Relationship;
+import com.flipkart.hbaseobjectmapper.Family;
+import com.flipkart.hbaseobjectmapper.HBColumn;
+import com.flipkart.hbaseobjectmapper.HBRecord;
+import com.flipkart.hbaseobjectmapper.HBTable;
 
 import java.io.Serializable;
-import java.util.List;
 
-/**
- * @author yassine
- */
-//@Document(collection = "cities")
-@Node
-public class City implements Serializable {
+@HBTable(name = "cities", families = {
+        @Family(name = "main")
+})
+public class City implements HBRecord<String>, Serializable {
 
-    @Id
-    @GeneratedValue
-    private Long id;
+    private String id;
+    @HBColumn(family = "main", column = "name")
     private String name;
+    @HBColumn(family = "main", column = "codePostal")
     private String codePostal;
 
-    @Relationship(type = "INCLUDES")
-    private List<Annonceur> annonces;
-
-
-    private Secteur secteur;
-
-    public String getCodePostal() {
-        return codePostal;
-    }
-
-    public void setCodePostal(String codePostal) {
-        this.codePostal = codePostal;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
+    @Override
+    public String composeRowKey() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-
-    public List<Annonceur> getAnnonces() {
-        return annonces;
-    }
-
-    public void setAnnonces(List<Annonceur> annonces) {
-        this.annonces = annonces;
-    }
-
-    public Secteur getSecteur() {
-        return secteur;
-    }
-
-    public void setSecteur(Secteur secteur) {
-        this.secteur = secteur;
-    }
-
     @Override
-    public String toString() {
-        return "City{" + "name=" + name + '}';
+    public void parseRowKey(String s) {
+        id = s;
     }
-
-
 }

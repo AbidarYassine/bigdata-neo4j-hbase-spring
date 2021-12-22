@@ -4,14 +4,15 @@ import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 import com.irisi.immo.model.bean.Annonce;
 import com.irisi.immo.model.bean.User;
-import com.irisi.immo.model.repository.UserDao;
-import com.irisi.immo.model.service.facade.AnnonceService;
+import com.irisi.immo.model.service.AnnonceService;
+import com.irisi.immo.model.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.util.Map;
 
 @Controller
@@ -19,7 +20,7 @@ import java.util.Map;
 public class AnnonceController {
     private final AnnonceService annonceService;
     private final Cloudinary cloudinary;
-    private final UserDao userDao;
+    private final UserService userService;
     int i = 0;
 
     String[] urls = {
@@ -31,21 +32,25 @@ public class AnnonceController {
     };
 
 
-    public AnnonceController(AnnonceService annonceService, Cloudinary cloudinary, UserDao userDao) {
+    public AnnonceController(AnnonceService annonceService, Cloudinary cloudinary, UserService userService) {
         this.annonceService = annonceService;
         this.cloudinary = cloudinary;
-        this.userDao = userDao;
+        this.userService = userService;
     }
 
     @PostMapping("/")
     public String insert(Annonce annonce, Model model, HttpSession session, @RequestParam("file") MultipartFile file) {
-        User user = userDao.findByEmail(session.getAttribute("email").toString());
-        annonce.setAnnonceur(user);
+        try {
+            User user = userService.findByEmail(session.getAttribute("email").toString());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+//        annonce.setAnnonceur(user);
         try {
             Map uploadResult = cloudinary.uploader().upload(file.getBytes(), ObjectUtils.asMap("resource_type", "auto"));
             String url = uploadResult.get("url").toString();
             annonce.setUrl(url);
-            annonceService.insert(annonce);
+            annonceService.save(annonce);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -53,19 +58,34 @@ public class AnnonceController {
     }
 
     @GetMapping("/id/{id}")
-    public Annonce findByRef(@PathVariable Long id) {
-        return annonceService.findByRef(id);
+    public Annonce findByRef(@PathVariable String id) {
+        try {
+            return annonceService.findById(id);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     @GetMapping("/")
     public String findAll(Model model) {
-        model.addAttribute("annonces", annonceService.findAll());
+        try {
+            model.addAttribute("annonces", annonceService.findAll());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return "index";
     }
 
     @DeleteMapping("/id/{id}")
-    public int delete(@PathVariable Long id) {
-        return annonceService.delete(id);
+    public int delete(@PathVariable String id) {
+        try {
+            annonceService.delete(id);
+            return 1;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return -1;
     }
 
     @GetMapping("/create")

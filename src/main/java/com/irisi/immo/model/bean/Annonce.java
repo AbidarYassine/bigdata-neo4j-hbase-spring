@@ -1,32 +1,106 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.irisi.immo.model.bean;
 
-import org.springframework.data.neo4j.core.schema.GeneratedValue;
-import org.springframework.data.neo4j.core.schema.Id;
-import org.springframework.data.neo4j.core.schema.Node;
-import org.springframework.data.neo4j.core.schema.Relationship;
+import com.flipkart.hbaseobjectmapper.Family;
+import com.flipkart.hbaseobjectmapper.HBColumn;
+import com.flipkart.hbaseobjectmapper.HBRecord;
+import com.flipkart.hbaseobjectmapper.HBTable;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.math.BigDecimal;
 
+@HBTable(name = "Annonce", families = {
+        @Family(name = "main")
+})
+public class Annonce implements HBRecord<String>, Serializable {
 
-/**
- * @author yassine
- */
-//@Document(collection = "annonces")
-@Node("annonce")
-public class Annonce implements Serializable {
-    private static final long serialVersionUID = 6659221496655031009L;
-    @Id
-    @GeneratedValue
-    private Long id;
+    private String id;
+    @HBColumn(family = "main", column = "title")
     private String title;
+    @HBColumn(family = "main", column = "reference")
     private String reference;
+    @HBColumn(family = "main", column = "url")
     private String url;
+    @HBColumn(family = "main", column = "description")
+    private String description;
+    @HBColumn(family = "main", column = "address")
+    private String address;
+    @HBColumn(family = "main", column = "piscine")
+    private Boolean piscine;
+    @HBColumn(family = "main", column = "pieces")
+    private Integer pieces;
+    @HBColumn(family = "main", column = "active")
+    private Boolean active;
+    @HBColumn(family = "main", column = "surface")
+    private Double surface;
+    @HBColumn(family = "main", column = "devise")
+    private String devise;
+    @HBColumn(family = "main", column = "prix")
+    private BigDecimal prix;
+    @HBColumn(family = "main", column = "chamber")
+    private Integer chamber;
+    @HBColumn(family = "main", column = "latitude")
+    private String latitude;
+    @HBColumn(family = "main", column = "longitude")
+    private String longitude;
+    @HBColumn(family = "main", column = "department")
+    private String department;
+    @HBColumn(family = "main", column = "toilet")
+    private Integer toilet;
+    @HBColumn(family = "main", column = "status")
+    private AnnonceStatus status;
+    @HBColumn(family = "main", column = "annonceur")
+    private Annonceur annonceur;
+    @HBColumn(family = "main", column = "category")
+    private Category category;
+    @HBColumn(family = "main", column = "annonceType")
+    private AnnonceType annonceType;
+    @HBColumn(family = "main", column = "secteur")
+    private Secteur secteur;
+
+    public Annonce() {
+    }
+
+    public Annonce(String id, String title, String reference, String description, String address, Boolean piscine, Integer pieces, Boolean active, Double surface, String devise, BigDecimal prix, Integer chamber, String latitude, String longitude, String department, Integer toilet, AnnonceStatus status, Annonceur annonceur, Category category, AnnonceType annonceType, Secteur secteur) {
+        this.id = id;
+        this.title = title;
+        this.reference = reference;
+        this.description = description;
+        this.address = address;
+        this.piscine = piscine;
+        this.pieces = pieces;
+        this.active = active;
+        this.surface = surface;
+        this.devise = devise;
+        this.prix = prix;
+        this.chamber = chamber;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.department = department;
+        this.toilet = toilet;
+        this.status = status;
+        this.annonceur = annonceur;
+        this.category = category;
+        this.annonceType = annonceType;
+        this.secteur = secteur;
+    }
+
+    @Override
+    public String composeRowKey() {
+        return title;
+    }
+
+    @Override
+    public void parseRowKey(String s) {
+        id = s;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getUrl() {
         return url;
@@ -35,48 +109,6 @@ public class Annonce implements Serializable {
     public void setUrl(String url) {
         this.url = url;
     }
-
-    private String description;
-    private String address;
-    private boolean piscine;
-    private int pices;
-    private boolean active;
-    private boolean processed;
-    private String area;
-    private String areaUnits;
-    private String currency;
-    private double price;
-
-    private double lastPrice;
-    private double first_price;
-    private String chamber;
-
-    private Date lastCheckDdate;
-    private boolean status;
-    private String codeStatus;
-    private String latitude;
-    private String longitude;
-    private int rankObtained;
-    private int rankMax;
-    private boolean updatePrice;
-    private boolean updateArea;
-    private boolean urlExist;
-
-    private Date newPriceDate;
-    private String department;
-    private String bathroom;
-    private String surfaceLand;
-
-
-    @Relationship(type = "HAS", direction = Relationship.Direction.INCOMING)
-    private User annonceur;
-
-    private Category category;
-
-    private AnnonceType annonceTypeEntity;
-
-    private City city;
-
 
     public String getTitle() {
         return title;
@@ -110,92 +142,60 @@ public class Annonce implements Serializable {
         this.address = address;
     }
 
-    public boolean isPiscine() {
+    public Boolean getPiscine() {
         return piscine;
     }
 
-    public void setPiscine(boolean piscine) {
+    public void setPiscine(Boolean piscine) {
         this.piscine = piscine;
     }
 
-    public int getPices() {
-        return pices;
+    public Integer getPieces() {
+        return pieces;
     }
 
-    public void setPices(int pices) {
-        this.pices = pices;
+    public void setPieces(Integer pieces) {
+        this.pieces = pieces;
     }
 
-    public boolean isActive() {
+    public Boolean getActive() {
         return active;
     }
 
-    public void setActive(boolean active) {
+    public void setActive(Boolean active) {
         this.active = active;
     }
 
-    public boolean isProcessed() {
-        return processed;
+    public Double getSurface() {
+        return surface;
     }
 
-    public void setProcessed(boolean processed) {
-        this.processed = processed;
+    public void setSurface(Double surface) {
+        this.surface = surface;
     }
 
-    public String getArea() {
-        return area;
+    public String getDevise() {
+        return devise;
     }
 
-    public void setArea(String area) {
-        this.area = area;
+    public void setDevise(String devise) {
+        this.devise = devise;
     }
 
-    public String getAreaUnits() {
-        return areaUnits;
+    public BigDecimal getPrix() {
+        return prix;
     }
 
-    public void setAreaUnits(String areaUnits) {
-        this.areaUnits = areaUnits;
+    public void setPrix(BigDecimal prix) {
+        this.prix = prix;
     }
 
-    public String getCurrency() {
-        return currency;
-    }
-
-    public void setCurrency(String currency) {
-        this.currency = currency;
-    }
-
-    public String getChamber() {
+    public Integer getChamber() {
         return chamber;
     }
 
-    public void setChamber(String chamber) {
+    public void setChamber(Integer chamber) {
         this.chamber = chamber;
-    }
-
-    public Date getLastCheckDdate() {
-        return lastCheckDdate;
-    }
-
-    public void setLastCheckDdate(Date lastCheckDdate) {
-        this.lastCheckDdate = lastCheckDdate;
-    }
-
-    public boolean isStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
-
-    public String getCodeStatus() {
-        return codeStatus;
-    }
-
-    public void setCodeStatus(String codeStatus) {
-        this.codeStatus = codeStatus;
     }
 
     public String getLatitude() {
@@ -214,79 +214,6 @@ public class Annonce implements Serializable {
         this.longitude = longitude;
     }
 
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public double getLastPrice() {
-        return lastPrice;
-    }
-
-    public void setLastPrice(double lastPrice) {
-        this.lastPrice = lastPrice;
-    }
-
-    public double getFirst_price() {
-        return first_price;
-    }
-
-    public void setFirst_price(double first_price) {
-        this.first_price = first_price;
-    }
-
-    public int getRankObtained() {
-        return rankObtained;
-    }
-
-    public void setRankObtained(int rankObtained) {
-        this.rankObtained = rankObtained;
-    }
-
-    public int getRankMax() {
-        return rankMax;
-    }
-
-    public void setRankMax(int rankMax) {
-        this.rankMax = rankMax;
-    }
-
-    public boolean isUpdatePrice() {
-        return updatePrice;
-    }
-
-    public void setUpdatePrice(boolean updatePrice) {
-        this.updatePrice = updatePrice;
-    }
-
-    public boolean isUpdateArea() {
-        return updateArea;
-    }
-
-    public void setUpdateArea(boolean updateArea) {
-        this.updateArea = updateArea;
-    }
-
-    public boolean isUrlExist() {
-        return urlExist;
-    }
-
-    public void setUrlExist(boolean urlExist) {
-        this.urlExist = urlExist;
-    }
-
-    public Date getNewPriceDate() {
-        return newPriceDate;
-    }
-
-    public void setNewPriceDate(Date newPriceDate) {
-        this.newPriceDate = newPriceDate;
-    }
-
     public String getDepartment() {
         return department;
     }
@@ -295,27 +222,27 @@ public class Annonce implements Serializable {
         this.department = department;
     }
 
-    public String getBathroom() {
-        return bathroom;
+    public Integer getToilet() {
+        return toilet;
     }
 
-    public void setBathroom(String bathroom) {
-        this.bathroom = bathroom;
+    public void setToilet(Integer toilet) {
+        this.toilet = toilet;
     }
 
-    public String getSurfaceLand() {
-        return surfaceLand;
+    public AnnonceStatus getStatus() {
+        return status;
     }
 
-    public void setSurfaceLand(String surfaceLand) {
-        this.surfaceLand = surfaceLand;
+    public void setStatus(AnnonceStatus status) {
+        this.status = status;
     }
 
-    public User getAnnonceur() {
+    public Annonceur getAnnonceur() {
         return annonceur;
     }
 
-    public void setAnnonceur(User annonceur) {
+    public void setAnnonceur(Annonceur annonceur) {
         this.annonceur = annonceur;
     }
 
@@ -327,26 +254,19 @@ public class Annonce implements Serializable {
         this.category = category;
     }
 
-    public AnnonceType getAnnonceTypeEntity() {
-        return annonceTypeEntity;
+    public AnnonceType getAnnonceType() {
+        return annonceType;
     }
 
-    public void setAnnonceTypeEntity(AnnonceType annonceTypeEntity) {
-        this.annonceTypeEntity = annonceTypeEntity;
+    public void setAnnonceType(AnnonceType annonceType) {
+        this.annonceType = annonceType;
     }
 
-    public City getCity() {
-        return city;
+    public Secteur getSecteur() {
+        return secteur;
     }
 
-    public void setCity(City city) {
-        this.city = city;
+    public void setSecteur(Secteur secteur) {
+        this.secteur = secteur;
     }
-
-    @Override
-    public String toString() {
-        return "Annonce{" + "id=" + id + '}';
-    }
-
-
 }

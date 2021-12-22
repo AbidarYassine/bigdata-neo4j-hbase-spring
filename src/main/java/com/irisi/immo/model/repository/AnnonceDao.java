@@ -1,14 +1,14 @@
 package com.irisi.immo.model.repository;
 
+import com.flipkart.hbaseobjectmapper.AbstractHBDAO;
 import com.irisi.immo.model.bean.Annonce;
-import org.springframework.data.neo4j.repository.Neo4jRepository;
-import org.springframework.stereotype.Repository;
+import org.apache.hadoop.hbase.client.Connection;
+import org.springframework.stereotype.Component;
 
-//@Repository
-//public interface AnnonceDao extends MongoRepository<Annonce, String> {
-//}
+@Component
+public class AnnonceDao extends AbstractHBDAO<String, Annonce> {
 
-@Repository
-public interface AnnonceDao extends Neo4jRepository<Annonce, Long> {
+    public AnnonceDao(Connection connection) {
+        super(connection);
+    }
 }
-

@@ -1,6 +1,7 @@
 package com.irisi.immo.controller;
 
-import com.irisi.immo.model.service.facade.AnnonceService;
+import com.irisi.immo.model.service.AnnonceService;
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +19,7 @@ public class HomeController {
         this.annonceService = annonceService;
     }
 
+    @SneakyThrows
     @GetMapping()
     public String getHome(Model model) {
         model.addAttribute("annonces", annonceService.findAll());
