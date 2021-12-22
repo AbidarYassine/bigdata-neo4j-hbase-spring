@@ -73,7 +73,7 @@ public class AnnonceController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return "index";
+        return "annonces";
     }
 
     @DeleteMapping("/id/{id}")

@@ -1,0 +1,232 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <link rel="icon" type="/images/png" th:href="@{/images/favicon.png}">
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <!-- Material Design Icons -->
+    <link th:href="@{/vendor/icons/css/materialdesignicons.min.css}" media="all" rel="stylesheet" type="text/css"/>
+    <!-- Select2 CSS -->
+    <link th:href="@{/vendor/select2/css/select2-bootstrap.css}"/>
+    <link th:href="@{/vendor/select2/css/select2.min.css}" rel="stylesheet"/>
+    <!-- Custom styles for this template -->
+    <link th:href="@{/css/osahan.css}" rel="stylesheet">
+    <title>Home</title>
+</head>
+
+<body>
+<nav th:replace="layouts :: navbar"></nav>
+<div class="container">
+
+    <section class="osahan-slider">
+        <div id="osahanslider" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#osahanslider" data-slide-to="0" class=""></li>
+                <li data-target="#osahanslider" data-slide-to="1" class="active"></li>
+            </ol>
+            <div class="carousel-inner" role="listbox">
+                <div class="carousel-item slider-one">
+                    <div class="overlay"></div>
+                </div>
+                <div class="carousel-item slider-two active">
+                    <div class="overlay"></div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#osahanslider" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#osahanslider" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+        <div class="slider-form inner-page-form">
+            <div class="container">
+                <h1 class="text-left mb-5">Trouvez votre propriété préférée</h1>
+                <form>
+                    <div class="row no-gutters">
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-6">
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="mdi mdi-map-marker-multiple"></i></div>
+                                <select class="form-control select2 select2-hidden-accessible" name="location" data-select2-id="1" tabindex="-1" aria-hidden="true">
+                                    <option disabled="" selected="" data-select2-id="3">Any Location</option>
+                                    <option>Australia</option>
+                                    <option>Brazil</option>
+                                    <option>Cambodia</option>
+                                    <option>Dominica</option>
+                                    <option>France</option>
+                                    <option>Guyana</option>
+                                    <option>Hong Kong</option>
+                                    <option>Ireland</option>
+                                    <option>Japan</option>
+                                    <option>Malaysia</option>
+                                    <option>Nepal</option>
+                                    <option>Oman</option>
+                                    <option>Peru</option>
+                                </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="2" style="width: 226.578px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-location-qi-container"><span class="select2-selection__rendered" id="select2-location-qi-container" role="textbox" aria-readonly="true" title="Any Location">Any Location</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-6">
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="mdi mdi-city"></i></div>
+                                <select class="form-control select2 select2-hidden-accessible" name="location" data-select2-id="4" tabindex="-1" aria-hidden="true">
+                                    <option disabled="" selected="" data-select2-id="6">Any Status</option>
+                                    <option>Heigh </option>
+                                    <option>Midium</option>
+                                    <option>Normal</option>
+                                </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="5" style="width: 226.578px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-location-1h-container"><span class="select2-selection__rendered" id="select2-location-1h-container" role="textbox" aria-readonly="true" title="Any Status">Any Status</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-6">
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="mdi mdi-home-modern"></i></div>
+                                <select class="form-control select2 select2-hidden-accessible" name="location" data-select2-id="7" tabindex="-1" aria-hidden="true">
+                                    <option disabled="" selected="" data-select2-id="9">Any Type</option>
+                                    <option>Property Types</option>
+                                    <option value="">House/Villa</option>
+                                    <option value="">Flat</option>
+                                    <option value="">Plot/Land</option>
+                                    <option value="">Office Space</option>
+                                    <option value="">Shop/Showroom</option>
+                                    <option value="">Commercial Land</option>
+                                    <option value="">Warehouse/ Godown</option>
+                                    <option value="">Industrial Building</option>
+                                </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="8" style="width: 226.578px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-location-w0-container"><span class="select2-selection__rendered" id="select2-location-w0-container" role="textbox" aria-readonly="true" title="Any Type">Any Type</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-6">
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="mdi mdi-hotel"></i></div>
+                                <select class="form-control select2 select2-hidden-accessible" name="location" data-select2-id="10" tabindex="-1" aria-hidden="true">
+                                    <option disabled="" selected="" data-select2-id="12">Min. Bedrooms</option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                    <option>6</option>
+                                    <option>7</option>
+                                    <option>8</option>
+                                    <option>9</option>
+                                    <option>10</option>
+                                </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="11" style="width: 226.578px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-location-61-container"><span class="select2-selection__rendered" id="select2-location-61-container" role="textbox" aria-readonly="true" title="Min. Bedrooms">Min. Bedrooms</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-6">
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="mdi mdi-magnify-minus-outline"></i></div>
+                                <select class="form-control select2 select2-hidden-accessible" name="location" data-select2-id="13" tabindex="-1" aria-hidden="true">
+                                    <option disabled="" selected="" data-select2-id="15">Min Size</option>
+                                    <option>100</option>
+                                    <option>200</option>
+                                    <option>300</option>
+                                    <option>400</option>
+                                    <option>500</option>
+                                    <option>600</option>
+                                    <option>700</option>
+                                    <option>800</option>
+                                    <option>900</option>
+                                    <option>1000</option>
+                                </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="14" style="width: 226.578px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-location-mw-container"><span class="select2-selection__rendered" id="select2-location-mw-container" role="textbox" aria-readonly="true" title="Min Size">Min Size</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-6">
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="mdi mdi-magnify-plus-outline"></i></div>
+                                <select class="form-control select2 select2-hidden-accessible" name="location" data-select2-id="16" tabindex="-1" aria-hidden="true">
+                                    <option disabled="" selected="" data-select2-id="18">Max Size</option>
+                                    <option>1000</option>
+                                    <option>2000</option>
+                                    <option>3000</option>
+                                    <option>4000</option>
+                                    <option>5000</option>
+                                    <option>6000</option>
+                                    <option>7000</option>
+                                    <option>8000</option>
+                                    <option>9000</option>
+                                    <option>10000</option>
+                                </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="17" style="width: 226.578px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-location-vv-container"><span class="select2-selection__rendered" id="select2-location-vv-container" role="textbox" aria-readonly="true" title="Max Size">Max Size</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-6">
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="mdi mdi-hot-tub"></i></div>
+                                <select class="form-control select2 select2-hidden-accessible" name="location" data-select2-id="19" tabindex="-1" aria-hidden="true">
+                                    <option disabled="" selected="" data-select2-id="21">Baths</option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                    <option>6</option>
+                                    <option>7</option>
+                                    <option>8</option>
+                                    <option>9</option>
+                                    <option>10</option>
+                                </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="20" style="width: 226.578px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-location-3q-container"><span class="select2-selection__rendered" id="select2-location-3q-container" role="textbox" aria-readonly="true" title="Baths">Baths</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-6">
+                            <div class="input-group"><button type="submit" class="btn btn-secondary btn-block no-radius font-weight-bold">SEARCH</button>   </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="top-search">
+                    <strong><i class="mdi mdi-keyboard"></i> Top Search</strong>
+                    <a href="#">Flat</a>
+                    <a href="#">Plot/Land</a>
+                    <a href="#">Office Space</a>
+                    <a href="#">Shop/Showroom</a>
+                    <a href="#">Commercial Land</a>
+                    <a href="#">Warehouse/ Godown</a>
+                    <a href="#">Industrial Building</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Properties List -->
+    <section class="section-padding">
+        <div class="section-title text-center mb-5">
+            <h2>Latest Properties</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div th:each="annonce : ${annonces}" class="col-lg-4 col-md-4">
+                    <div class="card card-list">
+                        <a href="#">
+                            <div class="card-img">
+                                <div class="love-badge text-danger"><i class="mdi mdi-heart"></i></div>
+                                <div class="badge images-badge"><i class="mdi mdi-image-filter"></i> 12</div>
+                                <span class="badge badge-primary">A louer</span>
+                                <img class="card-img-top" th:src="${annonce.url}" alt="Card image cap">
+                            </div>
+                            <div class="card-body">
+                                <h2 class="text-primary mb-2 mt-0">
+                                    <span th:utext="${annonce.prix}"></span><small>/Par mois</small>
+                                </h2>
+                                <h5 th:utext="${annonce.title}" class="card-title mb-2"></h5>
+                                <h6 th:utext="${annonce.address}" class="card-subtitle mt-1 mb-0 text-muted"><i
+                                        class="mdi mdi-home-map-marker"></i>
+                                </h6>
+                            </div>
+                            <div class="card-footer">
+                                <span><i class="mdi mdi-sofa"></i> Chambre : <strong
+                                        th:utext="${annonce.chamber}"></strong></span>
+                                <span><i
+                                        class="mdi mdi-move-resize-variant"></i> Surface : <strong
+                                        th:utext="${annonce.surface}"></strong></span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+</div>
+</body>
+
+<nav th:insert="layouts :: footer"></nav>
+</html>

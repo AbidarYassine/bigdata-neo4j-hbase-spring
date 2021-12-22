@@ -31,15 +31,15 @@
                             <div class="card-img">
                                 <div class="love-badge text-danger"><i class="mdi mdi-heart"></i></div>
                                 <div class="badge images-badge"><i class="mdi mdi-image-filter"></i> 12</div>
-                                <span class="badge badge-primary">For Sale</span>
+                                <span class="badge badge-primary">A louer</span>
                                 <img class="card-img-top" th:src="${annonce.url}" alt="Card image cap">
                             </div>
                             <div class="card-body">
                                 <h2 class="text-primary mb-2 mt-0">
-                                    <span th:value="${annonce.prix}"></span><small>/Per Month</small>
+                                    <span th:utext="${annonce.prix}"></span><small>/Par mois</small>
                                 </h2>
-                                <h5 th:value="${annonce.title}" class="card-title mb-2"></h5>
-                                <h6 th:value="${annonce.address}" class="card-subtitle mt-1 mb-0 text-muted"><i
+                                <h5 th:utext="${annonce.title}" class="card-title mb-2"></h5>
+                                <h6 th:utext="${annonce.address}" class="card-subtitle mt-1 mb-0 text-muted"><i
                                         class="mdi mdi-home-map-marker"></i>
                                 </h6>
                             </div>
@@ -47,8 +47,8 @@
                                 <span><i class="mdi mdi-sofa"></i> Chambre : <strong
                                         th:utext="${annonce.chamber}"></strong></span>
                                 <span><i
-                                        class="mdi mdi-move-resize-variant"></i> Area : <strong
-                                        th:value="${annonce.surface}"></strong></span>
+                                        class="mdi mdi-move-resize-variant"></i> Surface : <strong
+                                        th:utext="${annonce.surface}"></strong></span>
                             </div>
                         </a>
                     </div>
@@ -56,7 +56,7 @@
             </div>
             <div class="row mt-4">
                 <div class="col-md-12 text-center">
-                    <button class="btn btn-secondary font-weight-bold btn-lg" type="submit">VIEW ALL</button>
+                    <a th:href="@{/annonces/}" class="btn btn-secondary font-weight-bold btn-lg" >VOIR TOUT</a>
                 </div>
             </div>
         </div>
