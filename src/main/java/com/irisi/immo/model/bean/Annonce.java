@@ -18,8 +18,6 @@ public class Annonce implements HBRecord<String>, Serializable {
     private String title;
     @HBColumn(family = "main", column = "reference")
     private String reference;
-    @HBColumn(family = "main", column = "url")
-    private String url;
     @HBColumn(family = "main", column = "description")
     private String description;
     @HBColumn(family = "main", column = "address")
@@ -56,6 +54,8 @@ public class Annonce implements HBRecord<String>, Serializable {
     private AnnonceType annonceType;
     @HBColumn(family = "main", column = "secteur")
     private Secteur secteur;
+    @HBColumn(family = "main", column = "url")
+    private String url;
 
     public Annonce() {
     }
@@ -100,14 +100,6 @@ public class Annonce implements HBRecord<String>, Serializable {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
     }
 
     public String getTitle() {
@@ -192,6 +184,14 @@ public class Annonce implements HBRecord<String>, Serializable {
 
     public Integer getChamber() {
         return chamber;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public void setChamber(Integer chamber) {

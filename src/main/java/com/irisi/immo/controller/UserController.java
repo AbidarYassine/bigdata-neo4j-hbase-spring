@@ -1,8 +1,8 @@
 package com.irisi.immo.controller;
 
 import com.irisi.immo.controller.dto.LoginDto;
-import com.irisi.immo.model.bean.User;
-import com.irisi.immo.model.service.UserService;
+import com.irisi.immo.model.bean.Annonceur;
+import com.irisi.immo.model.service.AnnonceurService;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -17,12 +17,12 @@ import javax.servlet.http.HttpSession;
 @Slf4j
 @RequiredArgsConstructor
 public class UserController {
-    private final UserService userService;
+    private final AnnonceurService annonceurService;
 
 
     @GetMapping("/register")
     public String showSignUpForm(Model model) {
-        model.addAttribute("user", new User());
+        model.addAttribute("annonceur", new Annonceur());
         return "register";
     }
 
@@ -34,10 +34,10 @@ public class UserController {
 
     @SneakyThrows
     @PostMapping("/register")
-    public String signUpForm(User user, Model model, HttpSession session) {
-        userService.save(user);
+    public String signUpForm(Annonceur annonceur, Model model, HttpSession session) {
+        Annonceur savedAnnonceur = annonceurService.save(annonceur);
         session.setAttribute("login", true);
-        session.setAttribute("email", user.getEmail());
+        session.setAttribute("email", savedAnnonceur.getEmail());
         return "redirect:/";
     }
 
@@ -45,8 +45,8 @@ public class UserController {
     @PostMapping("/login")
     public String login(LoginDto login, Model model, HttpSession session) {
         log.info("test " + login);
-        User user = userService.findByEmail(login.getEmail());
-        if (user.getPassword().equals(login.getPassword())) {
+        Annonceur annonceur = annonceurService.findByEmail(login.getEmail());
+        if (annonceur.getPassword().equals(login.getPassword())) {
             session.setAttribute("login", true);
             session.setAttribute("email", login.getEmail());
             return "redirect:/";
@@ -64,17 +64,17 @@ public class UserController {
     }
 
 //    @GetMapping("/index")
-//    public String showUserList(Model model) {
-//        model.addAttribute("users", userService.findA());
+//    public String showAnnonceurList(Model model) {
+//        model.addAttribute("annonceurs", annonceurService.findA());
 //        return "index";
 //    }
 
 //    @GetMapping("/edit/{id}")
 //    public String showUpdateForm(@PathVariable("id") long id, Model model) {
-//        User user = userService.findByEmail(id)
-//                .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
+//        Annonceur annonceur = annonceurService.findByEmail(id)
+//                .orElseThrow(() -> new IllegalArgumentException("Invalid annonceur Id:" + id));
 //
-//        model.addAttribute("user", user);
-//        return "update-user";
+//        model.addAttribute("annonceur", annonceur);
+//        return "update-annonceur";
 //    }
 }

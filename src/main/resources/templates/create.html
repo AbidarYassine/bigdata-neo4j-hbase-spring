@@ -51,16 +51,16 @@
                         <div class="row">
                             <div class="form-group col-md-6">
                                 <label for="area">Area <span class="text-danger">*</span></label>
-                                <input th:field="*{area}" id="area"
+                                <input th:field="*{surface}" id="area"
                                        type="text"
                                        class="form-control"/>
                             </div>
-                            <div class="form-group col-md-6">
-                                <label for="areaUnits">Area Units</label>
-                                <input th:field="*{areaUnits}" id="areaUnits"
-                                       type="text"
-                                       class="form-control"/>
-                            </div>
+                            <!--                            <div class="form-group col-md-6">-->
+                            <!--                                <label for="areaUnits">Area Units</label>-->
+                            <!--                                <input th:field="*{areaUnits}" id="areaUnits"-->
+                            <!--                                       type="text"-->
+                            <!--                                       class="form-control"/>-->
+                            <!--                            </div>-->
                         </div>
                         <!--                        <div class="row">-->
                         <!--                            <div class="form-group col-md-6">-->
@@ -74,28 +74,13 @@
                         <div class="row">
                             <div class="form-group col-md-6">
                                 <label for="price">Prix <span class="text-danger">*</span></label>
-                                <input th:field="*{price}" id="price"
+                                <input th:field="*{prix}" id="price"
                                        type="text"
                                        class="form-control"/>
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="currency">Devise</label>
-                                <input th:field="*{currency}" id="currency"
-                                       type="text"
-                                       class="form-control"/>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-group col-md-6">
-                                <label for="first_price">Premier Prix <span class="text-danger">*</span></label>
-                                <input id="first_price" type="text"
-                                       th:field="*{first_price}"
-                                       class="form-control"/>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="lastPrice">Dernier Prix</label>
-                                <input id="lastPrice"
-                                       th:field="*{lastPrice}"
+                                <input th:field="*{devise}" id="currency"
                                        type="text"
                                        class="form-control"/>
                             </div>
@@ -110,7 +95,7 @@
                             <div class="form-group col-md-6">
                                 <label for="surfaceLand">Surface </label>
                                 <input id="surfaceLand"
-                                       th:field="*{surfaceLand}"
+                                       th:field="*{surface}"
                                        class="form-control"/>
                             </div>
                         </div>
@@ -121,7 +106,7 @@
                         </div>
                     </div>
                 </div>
-                <form>
+            </form>
         </div>
     </div>
 </div>

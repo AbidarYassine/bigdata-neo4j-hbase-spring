@@ -3,9 +3,10 @@ package com.irisi.immo.controller;
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 import com.irisi.immo.model.bean.Annonce;
-import com.irisi.immo.model.bean.User;
+import com.irisi.immo.model.bean.Annonceur;
+import com.irisi.immo.model.bean.Category;
 import com.irisi.immo.model.service.AnnonceService;
-import com.irisi.immo.model.service.UserService;
+import com.irisi.immo.model.service.AnnonceurService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +21,7 @@ import java.util.Map;
 public class AnnonceController {
     private final AnnonceService annonceService;
     private final Cloudinary cloudinary;
-    private final UserService userService;
+    private final AnnonceurService annonceurService;
     int i = 0;
 
     String[] urls = {
@@ -32,24 +33,22 @@ public class AnnonceController {
     };
 
 
-    public AnnonceController(AnnonceService annonceService, Cloudinary cloudinary, UserService userService) {
+    public AnnonceController(AnnonceService annonceService, Cloudinary cloudinary, AnnonceurService annonceurService) {
         this.annonceService = annonceService;
         this.cloudinary = cloudinary;
-        this.userService = userService;
+        this.annonceurService = annonceurService;
     }
 
     @PostMapping("/")
     public String insert(Annonce annonce, Model model, HttpSession session, @RequestParam("file") MultipartFile file) {
-        try {
-            User user = userService.findByEmail(session.getAttribute("email").toString());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-//        annonce.setAnnonceur(user);
+        System.out.println(session.getAttributeNames());
+        Annonceur annonceur = annonceurService.findByEmail(session.getAttribute("email").toString());
+        //        annonce.setAnnonceur(user);
         try {
             Map uploadResult = cloudinary.uploader().upload(file.getBytes(), ObjectUtils.asMap("resource_type", "auto"));
             String url = uploadResult.get("url").toString();
             annonce.setUrl(url);
+            annonce.setAnnonceur(annonceur);
             annonceService.save(annonce);
         } catch (Exception e) {
             e.printStackTrace();

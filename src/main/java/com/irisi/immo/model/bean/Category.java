@@ -7,7 +7,7 @@ import com.flipkart.hbaseobjectmapper.HBTable;
 
 import java.io.Serializable;
 
-@HBTable(name = "categories", families = {
+@HBTable(name = "Category", families = {
         @Family(name = "main")
 })
 public class Category implements HBRecord<String>, Serializable {
@@ -16,6 +16,13 @@ public class Category implements HBRecord<String>, Serializable {
     @HBColumn(family = "main", column = "name")
     private String name;
 
+    public Category() {
+    }
+
+    public Category(String id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 
     @Override
     public String composeRowKey() {
@@ -25,5 +32,21 @@ public class Category implements HBRecord<String>, Serializable {
     @Override
     public void parseRowKey(String s) {
         id = s;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

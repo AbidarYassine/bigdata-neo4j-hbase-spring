@@ -23,10 +23,10 @@
                 <div class="card padding-card">
                     <div class="card-body">
                         <h5 class="card-title mb-4">Register</h5>
-                        <form action="#" th:action="@{/register}" th:object="${user}" method="post">
+                        <form action="#" th:action="@{/register}" th:object="${annonceur}" method="post">
                             <div class="form-group">
                                 <label for="fullName">Full Name <span class="text-danger">*</span></label>
-                                <input th:field="*{fullName}" id="fullName" type="text" class="form-control"
+                                <input th:field="*{firstname}" id="fullName" type="text" class="form-control"
                                        placeholder="Enter Full Name">
                             </div>
 
@@ -40,6 +40,7 @@
                                 <label for="password">Password <span class="text-danger">*</span></label>
                                 <label for="password"></label><input th:field="*{password}" id="password"
                                                                      class="form-control"
+                                                                     th:type="password"
                                                                      placeholder="Email Address">
                             </div>
                             <button type="submit" class="btn btn-primary btn-lg btn-block">REGISTER</button>

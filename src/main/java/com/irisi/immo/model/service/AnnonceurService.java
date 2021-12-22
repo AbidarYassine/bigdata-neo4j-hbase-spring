@@ -14,4 +14,6 @@ public interface AnnonceurService {
     List<Annonceur> findAll() throws IOException;
 
     void delete(String id) throws IOException;
+
+    Annonceur findByEmail(String email);
 }

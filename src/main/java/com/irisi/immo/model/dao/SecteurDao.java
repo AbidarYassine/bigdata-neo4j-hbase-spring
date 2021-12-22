@@ -1,14 +1,14 @@
-package com.irisi.immo.model.repository;
+package com.irisi.immo.model.dao;
 
 import com.flipkart.hbaseobjectmapper.AbstractHBDAO;
-import com.irisi.immo.model.bean.Annonce;
+import com.irisi.immo.model.bean.Secteur;
 import org.apache.hadoop.hbase.client.Connection;
 import org.springframework.stereotype.Component;
 
 @Component
-public class AnnonceDao extends AbstractHBDAO<String, Annonce> {
+public class SecteurDao extends AbstractHBDAO<String, Secteur> {
 
-    public AnnonceDao(Connection connection) {
+    public SecteurDao(Connection connection) {
         super(connection);
     }
 }

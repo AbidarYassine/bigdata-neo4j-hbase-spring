@@ -1,4 +1,4 @@
-package com.irisi.immo.model.repository;
+package com.irisi.immo.model.dao;
 
 import com.flipkart.hbaseobjectmapper.AbstractHBDAO;
 import com.irisi.immo.model.bean.AnnonceType;

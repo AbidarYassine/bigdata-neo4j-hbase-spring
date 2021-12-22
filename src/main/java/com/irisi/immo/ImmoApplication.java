@@ -35,7 +35,7 @@ public class ImmoApplication implements CommandLineRunner {
 
     @Bean
     Connection getConnection() throws IOException {
-        System.setProperty("hadoop.home.dir", "C:/winutils");
+        System.setProperty("hadoop.home.dir", "D:/winutils");
         return ConnectionFactory.createConnection(HBaseConfiguration.create());
     }
 

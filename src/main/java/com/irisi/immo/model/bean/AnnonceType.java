@@ -8,7 +8,7 @@ import com.flipkart.hbaseobjectmapper.HBTable;
 import java.io.Serializable;
 import java.util.List;
 
-@HBTable(name = "annonceTypes", families = {
+@HBTable(name = "AnnonceType", families = {
         @Family(name = "main")
 })
 public class AnnonceType implements HBRecord<String>, Serializable {
@@ -19,6 +19,15 @@ public class AnnonceType implements HBRecord<String>, Serializable {
     @HBColumn(family = "main", column = "annonces")
     private List<Annonce> annonces;
 
+    public AnnonceType() {
+    }
+
+    public AnnonceType(String id, String type, List<Annonce> annonces) {
+        this.id = id;
+        this.type = type;
+        this.annonces = annonces;
+    }
+
     @Override
     public String composeRowKey() {
         return type;
@@ -27,5 +36,29 @@ public class AnnonceType implements HBRecord<String>, Serializable {
     @Override
     public void parseRowKey(String s) {
         id = s;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public List<Annonce> getAnnonces() {
+        return annonces;
+    }
+
+    public void setAnnonces(List<Annonce> annonces) {
+        this.annonces = annonces;
     }
 }

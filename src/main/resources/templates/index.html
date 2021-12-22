@@ -36,7 +36,7 @@
                             </div>
                             <div class="card-body">
                                 <h2 class="text-primary mb-2 mt-0">
-                                    <span th:value="${annonce.price}"></span><small>/Per Month</small>
+                                    <span th:value="${annonce.prix}"></span><small>/Per Month</small>
                                 </h2>
                                 <h5 th:value="${annonce.title}" class="card-title mb-2"></h5>
                                 <h6 th:value="${annonce.address}" class="card-subtitle mt-1 mb-0 text-muted"><i
@@ -48,7 +48,7 @@
                                         th:utext="${annonce.chamber}"></strong></span>
                                 <span><i
                                         class="mdi mdi-move-resize-variant"></i> Area : <strong
-                                        th:value="${annonce.area}"></strong></span>
+                                        th:value="${annonce.surface}"></strong></span>
                             </div>
                         </a>
                     </div>

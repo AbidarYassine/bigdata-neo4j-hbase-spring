@@ -1,6 +1,5 @@
 package com.irisi.immo.model.service;
 
-
 import com.irisi.immo.model.bean.Annonce;
 
 import java.io.IOException;

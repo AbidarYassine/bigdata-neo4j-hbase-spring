@@ -1,6 +1,5 @@
 package com.irisi.immo.model.service;
 
-
 import com.irisi.immo.model.bean.Secteur;
 
 import java.io.IOException;

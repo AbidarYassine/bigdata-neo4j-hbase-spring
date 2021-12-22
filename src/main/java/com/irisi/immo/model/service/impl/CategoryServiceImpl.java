@@ -1,9 +1,8 @@
 package com.irisi.immo.model.service.impl;
 
-
 import com.flipkart.hbaseobjectmapper.Records;
 import com.irisi.immo.model.bean.Category;
-import com.irisi.immo.model.repository.CategoryDao;
+import com.irisi.immo.model.dao.CategoryDao;
 import com.irisi.immo.model.service.CategoryService;
 import org.apache.hadoop.hbase.client.Scan;
 import org.springframework.beans.factory.annotation.Autowired;
