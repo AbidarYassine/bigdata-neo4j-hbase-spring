@@ -4,6 +4,7 @@ import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 import com.flipkart.hbaseobjectmapper.HBAdmin;
 import com.irisi.immo.model.bean.Annonce;
+import com.irisi.immo.model.util.HBaseUtils;
 import org.apache.hadoop.hbase.HBaseConfiguration;
 import org.apache.hadoop.hbase.TableName;
 import org.apache.hadoop.hbase.client.Admin;
@@ -41,18 +42,7 @@ public class ImmoApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        HBAdmin hbAdmin = HBAdmin.create(getConnection());
-        if (!tableExists(Annonce.class)) {
-            hbAdmin.createTable(Annonce.class);
-        }
-    }
-
-    public boolean tableExists(Class myClass) throws IOException {
-        String[] className = myClass.getName().split("\\.");
-        TableName tableName = TableName.valueOf(className[className.length - 1]);
-        Admin admin = getConnection().getAdmin();
-        TableName[] tableNames = admin.listTableNames();
-        return Arrays.stream(tableNames).filter(tn -> tn.equals(tableName)).findFirst().isPresent();
+        HBaseUtils.generateTables(getConnection(), "com/irisi/immo/model/bean");
     }
 
 }

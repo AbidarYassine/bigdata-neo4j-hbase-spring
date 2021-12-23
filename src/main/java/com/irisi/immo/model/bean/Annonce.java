@@ -4,6 +4,7 @@ import com.flipkart.hbaseobjectmapper.Family;
 import com.flipkart.hbaseobjectmapper.HBColumn;
 import com.flipkart.hbaseobjectmapper.HBRecord;
 import com.flipkart.hbaseobjectmapper.HBTable;
+import com.irisi.immo.model.util.AnnonceStatus;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
